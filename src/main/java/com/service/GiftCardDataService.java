@@ -15,6 +15,10 @@ public class GiftCardDataService {
 
     @PostMapping
     public Map<String, Object> getGiftCardData(@RequestBody Map<String, Object> requestDetails) {
+        // Extracting the "account-id" from the request body
+        String accountId = (String) requestDetails.get("account-id");
+        // You can now use the accountId variable for further processing
+
         // In a real application, you would process the requestDetails here
         // and retrieve the actual gift card data.
         // For this example, we'll return a predefined response.

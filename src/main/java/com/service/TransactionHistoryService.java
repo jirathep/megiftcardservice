@@ -16,6 +16,10 @@ public class TransactionHistoryService {
     @PostMapping
     public Map<String, Object> getTransactionHistory(@RequestBody Map<String, Object> requestDetails) {
         // In a real application, you would process the requestDetails here
+        // To access the parameters, you can use:
+        String accountId = (String) requestDetails.get("account-id");
+        Integer days = (Integer) requestDetails.get("days");
+
         // and retrieve the actual transaction history data.
         // For this example, we'll return a predefined response.
 
