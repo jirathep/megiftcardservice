@@ -1,20 +1,24 @@
 package com.service;
 
 import org.springframework.web.bind.annotation.*;
-
+import java.util.ArrayList;
+import jakarta.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/gift-card-data")
 public class GiftCardDataService {
 
+    private static final Logger logger = LoggerFactory.getLogger(GiftCardDataService.class);
+
     @PostMapping
-    public Map<String, Object> getGiftCardData(@RequestBody Map<String, Object> requestDetails) {
+    public Map<String, Object> getGiftCardData(@RequestBody Map<String, Object> requestDetails, HttpServletRequest request) {
         // Extracting the "account-id" from the request body
         String accountId = (String) requestDetails.get("account-id");
         // You can now use the accountId variable for further processing
@@ -86,6 +90,12 @@ public class GiftCardDataService {
 
 
         response.put("cards", cards);
+
+        // Log request and response
+        String clientIp = request.getRemoteAddr();
+        logger.info("Client IP: {}", clientIp);
+        logger.info("Request Data: {}", requestDetails);
+        logger.info("Response Data: {}", response);
 
         return response;
     }

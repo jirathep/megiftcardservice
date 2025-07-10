@@ -2,21 +2,30 @@ package com.service;
 
 import org.springframework.web.bind.annotation.*;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import jakarta.servlet.http.HttpServletRequest;
+
+
 
 @RestController
 @RequestMapping("/transaction-history")
 public class TransactionHistoryService {
 
+ private static final Logger logger = LoggerFactory.getLogger(TransactionHistoryService.class);
+
     @PostMapping
-    public Map<String, Object> getTransactionHistory(@RequestBody Map<String, Object> requestDetails) {
+    public Map<String, Object> getTransactionHistory(@RequestBody Map<String, Object> requestDetails, HttpServletRequest request) {
         // In a real application, you would process the requestDetails here
+        String clientIpAddress = request.getRemoteAddr();
         // To access the parameters, you can use:
+
         String accountId = (String) requestDetails.get("account-id");
         Integer days = (Integer) requestDetails.get("days");
 
@@ -185,6 +194,10 @@ public class TransactionHistoryService {
 
         response.put("transactions", transactions);
 
+        // Log request data, response data, and IP address
+        logger.info("Client IP: {}", clientIpAddress);
+        logger.info("Request Data: {}", requestDetails);
+        logger.info("Response Data: {}", response);
         return response;
     }
 }
