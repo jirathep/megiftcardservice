@@ -1,4 +1,4 @@
-package com.service;
+package com.example.demo.service;
 
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;

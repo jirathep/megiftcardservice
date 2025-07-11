@@ -1,4 +1,4 @@
-package com.service;
+package com.example.demo.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,13 +9,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+
 @RestController
 @RequestMapping("/account")
 public class AccountService {
 
  private static final Logger logger = LoggerFactory.getLogger(AccountService.class);
-
     @PostMapping
+
  public Map<String, Object> createAccount(@RequestBody Map<String, Object> accountDetails, HttpServletRequest request) {
  String clientIp = request.getRemoteAddr();
  logger.info("Request from IP: {}", clientIp);
