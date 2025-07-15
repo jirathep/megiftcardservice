@@ -82,7 +82,7 @@ public class AccountService {
         response.put("response-status", "SUCCESS");
         response.put("account-id", "12345 12345 12346");
         response.put("datetime", java.time.LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")));
-        response.put("balance", 17679.5);
+        response.put("balance", 17879.5);
 
  logger.info("Response for AccountService: {}", response);
 
