@@ -43,7 +43,7 @@ public class TransactionHistoryService {
         // Add sample transaction data
         Map<String, Object> transaction1 = new HashMap<>();
         transaction1.put("id", "1");
-        transaction1.put("logo", "https://placehold.co/40x40.png");
+        transaction1.put("logo", "https://pos.promptnow.com:13443/pos_pn/elephant/mcard/img/gourmet.jpg");
         transaction1.put("dataAiHint", "gourmet market");
         transaction1.put("description", "Gourmet Market");
         transaction1.put("date", "12:59");
@@ -53,7 +53,7 @@ public class TransactionHistoryService {
 
         Map<String, Object> transaction2 = new HashMap<>();
         transaction2.put("id", "2");
-        transaction2.put("logo", "https://placehold.co/40x40.png");
+        transaction2.put("logo", "https://pos.promptnow.com:13443/pos_pn/elephant/mcard/img/powermall.jpg");
         transaction2.put("dataAiHint", "power mall");
         transaction2.put("description", "Power Mall");
         transaction2.put("date", "11:59");
@@ -103,12 +103,12 @@ public class TransactionHistoryService {
 
         Map<String, Object> transaction7 = new HashMap<>();
         transaction7.put("id", "7");
-        transaction7.put("logo", "");
-        transaction7.put("dataAiHint", "");
-        transaction7.put("description", "Top-up");
+        transaction7.put("logo", "https://pos.promptnow.com:13443/pos_pn/elephant/mcard/img/powermall.jpg");
+        transaction7.put("dataAiHint", "power mall");
+        transaction7.put("description", "Power Mall");
         transaction7.put("date", "10:59");
-        transaction7.put("amount", 35000);
-        transaction7.put("type", "via Counter Service");
+        transaction7.put("amount", -3500);
+        transaction7.put("type", "Payment");
         transactions.add(transaction7);
 
         Map<String, Object> transaction8 = new HashMap<>();
@@ -123,12 +123,12 @@ public class TransactionHistoryService {
 
         Map<String, Object> transaction9 = new HashMap<>();
         transaction9.put("id", "9");
-        transaction9.put("logo", "");
-        transaction9.put("dataAiHint", "");
-        transaction9.put("description", "Top-up");
-        transaction9.put("date", "10:59");
-        transaction9.put("amount", 35000);
-        transaction9.put("type", "via Counter Service");
+        transaction9.put("logo", "https://pos.promptnow.com:13443/pos_pn/elephant/mcard/img/gourmet.jpg");
+        transaction9.put("dataAiHint", "gourmet market");
+        transaction9.put("description", "Gourmet Market");
+        transaction9.put("date", "11:29");
+        transaction9.put("amount", -400);
+        transaction9.put("type", "Payment");
         transactions.add(transaction9);
 
         Map<String, Object> transaction10 = new HashMap<>();
