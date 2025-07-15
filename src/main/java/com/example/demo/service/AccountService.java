@@ -27,6 +27,7 @@ public class AccountService {
 
  public Map<String, Object> createAccount(@RequestBody Map<String, Object> accountDetails, HttpServletRequest request) {
  String clientIp = request.getRemoteAddr();
+ Map<String, Object> response = new LinkedHashMap<>();
  logger.info("Request from IP: {}", clientIp);
  logger.info("Request body for AccountService: {}", accountDetails);
 
@@ -58,12 +59,24 @@ public class AccountService {
             Map<String, Object> authenApiResponse = restTemplate.postForObject(authenApiUrl, httpEntity, Map.class);
             logger.info("Response from authen API: {}", authenApiResponse);
             // You can process the response from the authen API here
+
+            if (authenApiResponse != null) {
+                if (authenApiResponse.containsKey("username")) {
+                    response.put("username", authenApiResponse.get("username"));
+                }
+                if (authenApiResponse.containsKey("uuid")) {
+                    response.put("uuid", authenApiResponse.get("uuid"));
+                }
+                if (authenApiResponse.containsKey("cardType")) {
+                    response.put("cardType", authenApiResponse.get("cardType"));
+                }
+            }
         } catch (Exception e) {
             logger.error("Error calling authen API: {}", e.getMessage());
             // Handle the error appropriately
         }
 
-        Map<String, Object> response = new LinkedHashMap<>();
+        
         response.put("response-code", "0");
         response.put("response-message", "Operation Success");
         response.put("response-status", "SUCCESS");
