@@ -45,37 +45,6 @@ public class AccountService {
         }
 
 
-        // Set the headers for the external API call
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-
-        // Create the HttpEntity with the request body and headers
-        HttpEntity<Map<String, Object>> httpEntity = new HttpEntity<>(authenRequestBody, headers);
-
-        // Make the POST request to the external API
-        try {
-            logger.info("Calling authen API at: {}", authenApiUrl);
-            logger.info("Authen API request body: {}", authenRequestBody);
-            Map<String, Object> authenApiResponse = restTemplate.postForObject(authenApiUrl, httpEntity, Map.class);
-            logger.info("Response from authen API: {}", authenApiResponse);
-            // You can process the response from the authen API here
-
-            if (authenApiResponse != null) {
-                if (authenApiResponse.containsKey("username")) {
-                    response.put("username", authenApiResponse.get("username"));
-                }
-                if (authenApiResponse.containsKey("uuid")) {
-                    response.put("uuid", authenApiResponse.get("uuid"));
-                }
-                if (authenApiResponse.containsKey("cardType")) {
-                    response.put("cardType", authenApiResponse.get("cardType"));
-                }
-            }
-        } catch (Exception e) {
-            logger.error("Error calling authen API: {}", e.getMessage());
-            // Handle the error appropriately
-        }
-
         
         response.put("response-code", "0");
         response.put("response-message", "Operation Success");
